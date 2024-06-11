@@ -15,13 +15,13 @@ void reset(char *a, int size) {
 }
 
 //Check if the board is full
-bool isBoardFull(char *array, int size) {
+bool boardFull(char *array, int size) {
   for(int i = 0; i < size; i++) {
     if(array[i] != 'x' && array[i] != 'X' && array[i] != 'o' && array[i] != 'O') {
-      return false; 
+      return true; 
     }
   }
-  return true;
+  return false;
 }
 
 //prints the board
@@ -38,17 +38,23 @@ void printBoard(char *array, int size) {
 //
 
 
-//theWinnerIs()
-void theWinnerIs(char *array, int size){
-  int score=0;
-  for(int i=0;i<=size;i++){
-    if(array[i] != 'x' || array[i] != 'X' || array[i] != 'o' || array[i] != 'O') {
-}
+bool gameOver(char *array, int size){
+
+  for(int i=0;i<size;i+=3){
+    if(i=='x'||i=='X'||i=='O'||i=='o'){
+      if(array[i]==array[i+1]==array[i+2]){
+        printf("this guy fugs!! %c",array[i]);
+        return true;
       }
-    
- 
-  printf("No one wins!! Draw!"); 
+      if(boardFull(array,size)){
+          return true;
+          }
+    } 
+  }
+
+    return false;
 }
+
 
 int main() {
   char arr[9];
@@ -56,9 +62,14 @@ int main() {
 
   reset(arr, size);
   printBoard(arr, size);
-  bool truthy = isBoardFull(arr, size);
+  //bool truthy = isBoardFull(arr, size);
 
-  printf("Is board full? %s\n", truthy ? "Yes" : "No");
+  while(!gameOver(arr,size)){
+      printf("hello");
+
+      }
+  
+  //printf("Is board full? %s\n", truthy ? "Yes" : "No");
 
   return 0;
 }
