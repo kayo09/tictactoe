@@ -1,1 +1,0 @@
-{"version":"1.0","name":"tac.c","isWebProject":false,"config":{"version":"1.0","initialCommand":null,"runConfigurations":[{"name":"Run","isDefault":true,"command":"gcc tac.c\n./a.out\n"}]}}
