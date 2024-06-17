@@ -1,76 +1,47 @@
-//https://mathworld.wolfram.com/MagicSquare.html
+/*
+
+AUTHOR: KRUTARTH PARMAR
+DATE: 2024
+ABOUT ME: HTTPS://KAYPARMAR.COM
 
 
+*/
+#include <stdio.h>
+#include<start_screen.h>
 
-#include <stdio.h> 
-#include <time.h> 
-#include <stdlib.h>
-#include <stdbool.h>
+//since the board is represented using 
+//int values, we encode -1,0,1 --> X, ,O respectively  
+char gridChar(int i ){
+  switch(i){
+    case -1:
+    return 'X';
+    case 0:
+    return ' ';
+    case 1: 
+    return 'O';
 
-//reset board
-void reset(char *a, int size) {
-  for(int i = 0; i < size; i++) {
-    a[i] = '0' + i + 1;
   }
 }
 
-//Check if the board is full
-bool boardFull(char *array, int size) {
-  for(int i = 0; i < size; i++) {
-    if(array[i] != 'x' && array[i] != 'X' && array[i] != 'o' && array[i] != 'O') {
-      return true; 
-    }
-  }
-  return false;
+//a generic function to draw the interface 
+void draw(int *arr,int size){
+  for(int i = 0 ; i < size ; i+=3){
+  printf("%c|%c|%c\n",gridChar(arr[i]),gridChar(arr[i+1]),gridChar(arr[i+2]));
+  if(i<size-3){
+  printf("-----\n");
 }
-
-//prints the board
-void printBoard(char *array, int size) {
-  for(int i = 0; i < size; i++) {
-    printf("%c ", array[i]);
-    if((i + 1) % 3 == 0) {
-      printf("\n");
-    }
   }
 }
 
-//Maximizing player playing as X
-//
 
+int main(){
+  //the board is represented as a one dimensional array
+  //of integers. 
+  int arr[9]={0,0,0,0,0,0,0,0,0};
+  int size= sizeof(arr) /sizeof(arr[0]);
 
-bool gameOver(char *array, int size){
+  draw(arr,size);
 
-  for(int i=0;i<size;i+=3){
-    if(i=='x'||i=='X'||i=='O'||i=='o'){
-      if(array[i]==array[i+1]==array[i+2]){
-        printf("this guy fugs!! %c",array[i]);
-        return true;
-      }
-      if(boardFull(array,size)){
-          return true;
-          }
-    } 
-  }
-
-    return false;
-}
-
-
-int main() {
-  char arr[9];
-  int size = sizeof(arr) / sizeof(arr[0]);
-
-  reset(arr, size);
-  printBoard(arr, size);
-  //bool truthy = isBoardFull(arr, size);
-
-  while(!gameOver(arr,size)){
-      printf("hello");
-
-      }
-  
-  //printf("Is board full? %s\n", truthy ? "Yes" : "No");
 
   return 0;
 }
-

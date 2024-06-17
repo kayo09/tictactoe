@@ -32,3 +32,5 @@ minimizes the loss for the worst case
 
 
 
+## Notes: 
+* 
